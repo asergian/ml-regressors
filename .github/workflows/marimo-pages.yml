@@ -33,7 +33,7 @@ jobs:
           filename=$(basename -- "$notebook")
           filename_noext="${filename%.*}"
           echo "Converting $notebook to HTML..."
-          marimo export --format html "$notebook" --output "_site/${filename_noext}.html"
+          marimo export html "$notebook" --output "_site/${filename_noext}.html"
         done
     
     - name: Create index page
