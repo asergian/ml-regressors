@@ -391,10 +391,5 @@ def _(
     )
 
 
-@app.cell
-def _():
-    return (mo,)
-
-
 if __name__ == "__main__":
     app.run()
