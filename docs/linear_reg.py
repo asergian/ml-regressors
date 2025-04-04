@@ -1,7 +1,16 @@
 import marimo
 
+# Linear Regression - Implementation and Examples
+
 __generated_with = "0.12.4"
 app = marimo.App()
+
+
+@app.cell
+def _():
+    import marimo as mo
+    mo.md("# Linear Regression - Implementation and Examples")
+    return mo
 
 
 @app.cell
@@ -13,8 +22,7 @@ def _():
 @app.cell
 def _():
     import numpy as np
-    import marimo as mo
-    return mo, np
+    return np
 
 
 @app.cell(hide_code=True)

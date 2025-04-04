@@ -39,7 +39,7 @@ jobs:
           filename=$(basename -- "$notebook")
           filename_noext="${filename%.*}"
           echo "Converting $notebook to HTML..."
-          marimo export html "$notebook" --output "_site/${filename_noext}.html"
+          marimo export html "$notebook" --output "_site/${filename_noext}.html" --skip-exec
         done
     
     - name: Create index page
@@ -67,11 +67,11 @@ jobs:
           filename=$(basename -- "$notebook")
           filename_noext="${filename%.*}"
           
-          # Better title extraction: look for notebook title in markdown/comments format at the beginning
+          # Extract proper titles from the notebooks based on known patterns
           if [[ "$filename_noext" == "linear_reg" ]]; then
-            title="Linear Regression"
+            title="Linear Regression - Implementation and Examples"
           elif [[ "$filename_noext" == "logistic_reg" ]]; then
-            title="Logistic Regression"
+            title="Logistic Regression - Implementation and Examples"
           else
             # Fallback to a prettified version of the filename
             title="${filename_noext^}" # Capitalize first letter

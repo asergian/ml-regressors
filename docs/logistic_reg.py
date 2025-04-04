@@ -1,7 +1,16 @@
 import marimo
 
+# Logistic Regression - Implementation and Examples
+
 __generated_with = "0.12.4"
 app = marimo.App()
+
+
+@app.cell
+def _():
+    import marimo as mo
+    mo.md("# Logistic Regression - Implementation and Examples")
+    return mo
 
 
 @app.cell
@@ -384,7 +393,6 @@ def _(
 
 @app.cell
 def _():
-    import marimo as mo
     return (mo,)
 
 
