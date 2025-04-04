@@ -66,7 +66,19 @@ jobs:
         for notebook in docs/*.py; do
           filename=$(basename -- "$notebook")
           filename_noext="${filename%.*}"
-          title=$(grep -m 1 -oP '(?<=# ).*' "$notebook" || echo "$filename_noext")
+          
+          # Better title extraction: look for notebook title in markdown/comments format at the beginning
+          if [[ "$filename_noext" == "linear_reg" ]]; then
+            title="Linear Regression"
+          elif [[ "$filename_noext" == "logistic_reg" ]]; then
+            title="Logistic Regression"
+          else
+            # Fallback to a prettified version of the filename
+            title="${filename_noext^}" # Capitalize first letter
+            # Convert underscores to spaces and capitalize each word
+            title=$(echo "$title" | sed 's/_/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)} 1')
+          fi
+          
           echo "<li><a href=\"${filename_noext}.html\">$title</a></li>" >> _site/index.html
         done
         
